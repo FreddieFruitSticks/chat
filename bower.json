@@ -1,0 +1,22 @@
+{
+  "name": "bower",
+  "authors": [
+    "Freddie <freddieodonnell@afrozaar.com>"
+  ],
+  "description": "",
+  "main": "index.html",
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#2.0-preview",
+    "app-layout": "PolymerElements/app-layout#2.0-preview",
+    "paper-input": "PolymerElements/paper-input#2.0-preview"
+  }
+}

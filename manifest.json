@@ -1,0 +1,7 @@
+{
+  "name": "chat-client",
+  "short_name": "chat-client",
+  "description": "chat client to talk to serverless api",
+  "start_url": "/",
+  "display": "standalone"
+}

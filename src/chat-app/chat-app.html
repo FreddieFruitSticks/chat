@@ -1,0 +1,56 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="./page-one.html">
+
+<!-- app-layout -->
+<link rel="import" href="../../bower_components/app-layout/app-drawer-layout/app-drawer-layout.html">
+<link rel="import" href="../../bower_components/app-layout/app-drawer/app-drawer.html">
+<link rel="import" href="../../bower_components/app-layout/app-toolbar/app-toolbar.html">
+<link rel="import" href="../../bower_components/app-layout/app-header-layout/app-header-layout.html">
+<link rel="import" href="../../bower_components/paper-input/paper-input.html">
+
+<dom-module id="chat-app">
+  <template>
+    <style>
+      :host{
+        display:block
+      }
+      .my-drawer {
+        background-color: #E7E7E7;
+        height:85%;
+      }
+      .my-topbar {
+        background-color: #d91511
+      }
+      .chat-input {
+        position:fixed;
+        bottom:40px;
+        width:50%;
+      }
+    </style>
+    <app-drawer-layout class="my-drawer" fullbleed>
+
+      <app-drawer slot="drawer">
+        <app-toolbar>List</app-toolbar>
+        hello from drawer
+      </app-drawer>
+
+      <app-header-layout>
+        <app-header>
+          <app-toolbar class="my-topbar">
+            Chat2
+          </app-toolbar>
+        </app-header>
+      </app-header-layout>
+
+      <page-one></page-one>
+      <paper-input label="Message" class="chat-input">
+      </paper-input>
+    <app-drawer-layout>
+  </template>
+
+  <script>
+    Polymer({
+      is:'chat-app'
+    })
+  </script>
+</dom-module>
