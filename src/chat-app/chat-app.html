@@ -74,12 +74,17 @@
       </paper-input>
     <app-drawer-layout>
 
+    <!-- app location matches the url on the url bar -->
     <app-location route={{route}}></app-location>
+
+    <!-- route gets ingested as arg and spits out routeData:{page:theroute} -->
     <app-route
       route={{route}}
       pattern="/:page"
       data={{routeData}}>
     <app-route>
+
+    <!-- listen to page in routeData and change the pages accordingly -->
     <iron-pages
         selected="[[routeData.page]]"
         attr-for-selected="name"
@@ -98,20 +103,24 @@
       static get config(){
         return {
           properties:{
+            // add observer to page attribute in routeData
             page: {
               type:String,
               reflectToAttribute: true,
               observer: 'pageChanged'
             }
           },
+          // create observer that takes in routeData.page
           observers:[
             'routePageChanged(routeData.page)'
           ],
         };
       }
+      // change the page value which triggers the observer pageChanged
       routePageChanged(page){
         this.page = page
       }
+      // all this to log the page changed, not used in the page transition
       pageChanged(page, oldPage){
         console.log(page)
       }
