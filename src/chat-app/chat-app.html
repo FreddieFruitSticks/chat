@@ -1,6 +1,7 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
 <link rel="import" href="../../bower_components/polymer/polymer-element.html">
 <link rel="import" href="./page-one.html">
+<link rel="import" href="./page-two.html">
 
 <!-- app-layout -->
 <link rel="import" href="../../bower_components/app-layout/app-drawer-layout/app-drawer-layout.html">
@@ -13,6 +14,7 @@
 
 <!-- Iron -->
 <link rel="import" href="../../bower_components/iron-selector/iron-selector.html">
+<link rel="import" href="../../bower_components/iron-pages/iron-pages.html">
 
 <!-- Routing -->
 <link rel="import" href="../../bower_components/app-route/app-location.html">
@@ -54,7 +56,7 @@
 
       <app-drawer slot="drawer">
         <app-toolbar>List</app-toolbar>
-        <iron-selector class="drawer-list" selected="[[page]]" attr-for-selected="name">
+        <iron-selector class="drawer-list" selected="[[page]]" attr-for-selected="name" role="navigation">
           <a name="page-one" href="/page-one">Page One</a>
           <a name="page-two" href="/page-two">Page Two</a>
         </iron-selector>
@@ -75,18 +77,16 @@
     <app-location route={{route}}></app-location>
     <app-route
       route={{route}}
-      pattern="/  :page"
+      pattern="/:page"
       data={{routeData}}>
     <app-route>
     <iron-pages
-      selected="[[routeData.page]]"
-      attr-for-selected="name"
-      fallback-selection="page-one"
-      role="main">
-
-      <page-one name="page-one"></page-one>
+        selected="[[routeData.page]]"
+        attr-for-selected="name"
+        fallback-selection="page-two"
+        role="main">
       <page-two name="page-two"></page-two>
-
+      <page-one name="page-one"></page-one>
     </iron-pages>
 
   </template>
@@ -95,7 +95,6 @@
     'use strict'
     class ChatApp extends Polymer.Element{
       static get is(){return "chat-app"}
-
       static get config(){
         return {
           properties:{
@@ -104,8 +103,14 @@
               reflectToAttribute: true,
               observer: 'pageChanged'
             }
-          }
+          },
+          observers:[
+            'routePageChanged(routeData.page)'
+          ],
         };
+      }
+      routePageChanged(page){
+        this.page = page
       }
       pageChanged(page, oldPage){
         console.log(page)
