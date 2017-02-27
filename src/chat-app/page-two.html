@@ -1,5 +1,3 @@
-<link rel="import" href="../../bower_components/polymer/polymer.html">
-
 <dom-module id="page-two">
   <template>
     <style>
@@ -7,11 +5,36 @@
     <div>
       hello from page2
     </div>
+    <iron-localstorage name="app-storage"
+      value={{localStorage}}
+      on-iron-localstorage-load-empty="initialise">
+    </iron-localstorage>
   </template>
 
   <script>
-    Polymer({
-      is:'page-two'
-    })
+    class PageTwo extends Polymer.Element{
+      static get is(){
+        return "page-two"
+      }
+      static get config(){
+        return {
+          properties:{
+            localStorage:{
+              type:String,
+              key:undefined,
+              value:undefined
+            }
+          },
+        };
+      }
+
+      initialise(){
+        this.localStorage = {
+          key:"initial_key",
+          value:"initial_value"
+        }
+      }
+    }
+    customElements.define(PageTwo.is, PageTwo)
   </script>
 </dom-module>
