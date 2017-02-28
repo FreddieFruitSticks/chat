@@ -43,7 +43,15 @@
       <app-header-layout>
         <app-header>
           <app-toolbar class="my-topbar">
-            Chat2
+            <span>Chat2</span>
+            <span>
+              <button on-click="toggle">
+                settings
+              </button>
+              <iron-collapse id="settings">
+                <div>content</div>
+              </iron-collapse>
+            </span>
           </app-toolbar>
         </app-header>
       </app-header-layout>
@@ -101,6 +109,10 @@
       // all this to log the page changed, not used in the page transition
       pageChanged(page, oldPage){
         console.log(page)
+      }
+
+      toggle(){
+        this.$.settings.toggle();
       }
 
     }
