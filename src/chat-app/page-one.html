@@ -3,7 +3,7 @@
     <style>
     </style>
     <div>
-      hello from page1
+      <button on-click="click_me">BUBBLES!</button>
     </div>
   </template>
 
@@ -11,6 +11,15 @@
     class PageOne extends Polymer.Element{
       static get is(){
         return "page-one"
+      }
+      constructor(){
+        super();
+      }
+
+      click_me(){
+        this.fire('iron-announce', {
+          text: 'This is an announcement!'
+        }, { bubbles: true });
       }
     }
     customElements.define(PageOne.is,PageOne)

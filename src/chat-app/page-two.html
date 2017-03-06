@@ -1,14 +1,23 @@
 <dom-module id="page-two">
   <template>
     <style>
+      .foote{
+        position:absolute;
+        bottom:0px;
+        width:100%;
+      }
     </style>
     <div>
-      hello from page2
-    </div>
     <iron-localstorage name="app-storage"
       value={{localStorage}}
       on-iron-localstorage-load-empty="initialise">
     </iron-localstorage>
+
+    <div class="foote">
+      <message-component value=[[value]]></message-component>
+    </div>
+  </div>
+
   </template>
 
   <script>
@@ -23,6 +32,10 @@
               type:String,
               key:undefined,
               value:undefined
+            },
+            value:{
+              type:String,
+              value:undefined,
             }
           },
         };

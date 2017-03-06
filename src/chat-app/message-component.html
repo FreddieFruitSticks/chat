@@ -1,0 +1,31 @@
+<dom-module id="message-component">
+  <template>
+    <style>
+    </style>
+    <div>
+      [[value]]
+    </div>
+  </template>
+
+  <script>
+    class MessageComponent extends Polymer.Element{
+      static get is(){
+        return "message-component"
+      }
+      constructor(){
+        super();
+      }
+      static get config(){
+        return {
+          properties:{
+            value:{
+              type:String,
+              value:undefined,
+            }
+          },
+        };
+      }
+    }
+    customElements.define(MessageComponent.is, MessageComponent)
+  </script>
+</dom-module>

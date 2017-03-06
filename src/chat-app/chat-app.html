@@ -28,8 +28,14 @@
         color:black;
         font-weight:bold;
       }
+      .foote{
+        position:absolute;
+        bottom:0;
+        width:100%;
+      }
 
     </style>
+
     <app-drawer-layout class="my-drawer" fullbleed>
 
       <app-drawer slot="drawer">
@@ -44,21 +50,32 @@
         <app-header>
           <app-toolbar class="my-topbar">
             <span>Chat2</span>
-            <span>
-              <button on-click="toggle">
-                settings
-              </button>
-              <iron-collapse id="settings">
-                <div>content</div>
-              </iron-collapse>
-            </span>
           </app-toolbar>
         </app-header>
       </app-header-layout>
 
-      <paper-input label="Message" class="chat-input">
-      </paper-input>
+      <!-- listen to page in routeData and change the pages accordingly -->
+      <iron-pages
+          selected="[[routeData.page]]"
+          attr-for-selected="name"
+          fallback-selection="page-two"
+          role="main">
+        <page-two value=[[msg]] name="page-two"></page-two>
+        <page-one name="page-one"></page-one>
+      </iron-pages>
+
+      <div class="chat-input">
+        <span>
+          <paper-input value={{mesg}} label="Message">
+          </paper-input>
+        </span>
+        <span style="float:right">
+          <button on-click="submit">Send</button>
+        </span>
+      </div>
+
     <app-drawer-layout>
+
 
     <!-- app location matches the url on the url bar -->
     <app-location route={{route}}></app-location>
@@ -69,16 +86,6 @@
       pattern="/:page"
       data={{routeData}}>
     <app-route>
-
-    <!-- listen to page in routeData and change the pages accordingly -->
-    <iron-pages
-        selected="[[routeData.page]]"
-        attr-for-selected="name"
-        fallback-selection="page-two"
-        role="main">
-      <page-two name="page-two"></page-two>
-      <page-one name="page-one"></page-one>
-    </iron-pages>
 
   </template>
 
@@ -94,6 +101,14 @@
               type:String,
               reflectToAttribute: true,
               observer: 'pageChanged'
+            },
+            msg:{
+              type:String,
+              value:undefined
+            },
+            mesg:{
+              type:String,
+              value:undefined
             }
           },
           // create observer that takes in routeData.page
@@ -111,8 +126,8 @@
         console.log(page)
       }
 
-      toggle(){
-        this.$.settings.toggle();
+      submit(){
+        this.msg=this.mesg
       }
 
     }
