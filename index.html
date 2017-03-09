@@ -3,7 +3,9 @@
   <head>
     <title>chat-client</title>
     <!-- <script data-main="src/redux/store" src="./require.js"></script> -->
-
+    <script src="./bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+    <script src="./node_modules/redux/dist/redux.js"></script>
+    <link rel="import" href="./bower_components/polymer-redux/polymer-redux.html">
   </head>
 
   <body>
@@ -11,11 +13,11 @@
       <script src="dist/out.js"></script>
       <link rel="import" href="/src/elements.html">
       <link rel="import" href="/src/chat-app/chat-app.html">
+
       <template id="app">
       </template>
       <chat-app></chat-app>
     </dom-bind>
     <script src="src/scripts/app.js"></script>
-    <script> console.log('last Script: ', app.bob)</script>
   </body>
 </html>

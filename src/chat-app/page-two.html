@@ -31,19 +31,17 @@
         console.log(store)
       }
 
-      static get config(){
+      static get properties(){
         return {
-          properties:{
-            localStorage:{
-              type:String,
-              key:undefined,
-              value:undefined
-            },
-            value:{
-              type:String,
-              value:undefined,
-            }
+          localStorage:{
+            type:String,
+            key:undefined,
+            value:undefined
           },
+          value:{
+            type:String,
+            value:undefined,
+          }
         };
       }
 

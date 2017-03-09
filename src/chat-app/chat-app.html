@@ -67,7 +67,7 @@
 
       <div class="chat-input">
         <span>
-          <paper-input value={{mesg}} label="Message">
+          <paper-input id="input" label="Message">
           </paper-input>
         </span>
         <span style="float:right">
@@ -91,12 +91,12 @@
   </template>
   <script>
     'use strict'
-    class ChatApp extends Polymer.Element{
+    const ReduxMixin = PolymerRedux(store)
+
+    class ChatApp extends ReduxMixin(Polymer.Element){
       static get is(){return "chat-app"}
-      static get config(){
-        return {
-          properties:{
-            // add observer to page attribute in routeData
+      static get properties(){
+          return{
             page: {
               type:String,
               reflectToAttribute: true,
@@ -104,18 +104,22 @@
             },
             msg:{
               type:String,
-              value:undefined
-            },
-            mesg:{
-              type:String,
-              value:undefined
+              statePath:'msg'
             }
-          },
+        }
+      }
+      static get config(){
+        return {
           // create observer that takes in routeData.page
           observers:[
             'routePageChanged(routeData.page)'
           ],
         };
+      }
+
+      connectedCallback() {
+          super.connectedCallback();
+          console.log("props", this.msg)
       }
       // change the page value which triggers the observer pageChanged
       routePageChanged(page){
@@ -127,7 +131,7 @@
       }
 
       submit(){
-        this.msg=this.mesg
+        this.dispatch({type: 'MESSAGE', value: this.$.input.value })
       }
 
     }
