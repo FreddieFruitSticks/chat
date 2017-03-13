@@ -3,7 +3,14 @@
     <style>
     </style>
     <div>
-      [[value]]
+      <iron-list items=[[value]]>
+        <template>
+          <div>
+            You: [[value]]
+          </div>
+        </template>
+      </iron-list>
+      
     </div>
   </template>
 
@@ -15,11 +22,11 @@
       constructor(){
         super();
       }
+
       static get properties(){
         return {
           value:{
             type:String,
-            value:"aweh",
             value:undefined,
           }
         };

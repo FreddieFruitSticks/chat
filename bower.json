@@ -24,6 +24,7 @@
     "iron-localstorage": "PolymerElements/iron-localstorage#2.0-preview",
     "iron-collapse": "PolymerElements/iron-collapse#2.0-preview",
     "iron-a11y-announcer": "PolymerElements/iron-a11y-announcer#2.0-preview",
-    "polymer-redux": "polymer-2"
+    "polymer-redux": "polymer-2",
+    "iron-list": "PolymerElements/iron-list#2.0-preview"
   }
 }
