@@ -1,0 +1,27 @@
+<dom-module id="chat-page">
+  <template>
+    <style>
+    </style>
+    <div>
+      <iron-pages
+          selected="[[routeData.page]]"
+          attr-for-selected="name"
+          fallback-selection="page-two"
+          role="main">
+        <page-two value=[[msg]] name="page-two"></page-two>
+      </iron-pages>
+    </div>
+  </template>
+
+  <script>
+    class ChatPage extends Polymer.Element{
+      static get is(){
+        return "chat-page"
+      }
+      constructor(){
+        super();
+      }
+    }
+    customElements.define(ChatPage.is, ChatPage)
+  </script>
+</dom-module>
