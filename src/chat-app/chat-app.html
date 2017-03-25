@@ -48,7 +48,7 @@
       </app-drawer>
 
       <!-- TODO: find a way to stop the messages going in to this header, and find a way to scroll -->
-      
+
       <!-- <app-header-layout>
         <app-header>
           <app-toolbar class="my-topbar">
@@ -58,14 +58,16 @@
       </app-header-layout> -->
 
       <!-- listen to page in routeData and change the pages accordingly -->
-      <iron-pages
-          selected="[[routeData.page]]"
-          attr-for-selected="name"
-          fallback-selection="page-two"
-          role="main">
-        <page-two value=[[msg]] name="page-two"></page-two>
-        <page-one name="page-one"></page-one>
-      </iron-pages>
+      <app-box>
+        <iron-pages
+            selected="[[routeData.page]]"
+            attr-for-selected="name"
+            fallback-selection="page-two"
+            role="main">
+          <page-two value=[[msg]] name="page-two"></page-two>
+          <page-one name="page-one"></page-one>
+        </iron-pages>
+      </app-box>
 
       <div class="chat-input">
         <span>
